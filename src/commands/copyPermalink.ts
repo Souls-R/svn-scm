@@ -1,4 +1,4 @@
-import { commands, env, window } from "vscode";
+import { commands, env, Uri, window } from "vscode";
 import { SourceControlManager } from "../source_control_manager";
 import { Command } from "./command";
 
@@ -8,13 +8,16 @@ export class CopyPermalink extends Command {
   }
 
   public async execute(): Promise<void> {
-    const editor = window.activeTextEditor;
-    if (!editor) {
-      window.showErrorMessage("No active editor");
-      return;
+    let fileUri: Uri | undefined = this.getUriFromActiveTab();
+
+    if (!fileUri) {
+      fileUri = window.activeTextEditor?.document.uri;
     }
 
-    const fileUri = editor.document.uri;
+    if (!fileUri) {
+      window.showErrorMessage("No file is currently open");
+      return;
+    }
     if (fileUri.scheme !== "file") {
       window.showErrorMessage("File is not a local file");
       return;
