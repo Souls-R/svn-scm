@@ -33,6 +33,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22.18'
+          cache: npm
 
       - name: Install SVN (Ubuntu)
         if: runner.os == 'Linux'
@@ -98,6 +99,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22.18'
+          cache: npm
 
       - name: Install SVN (Ubuntu)
         if: runner.os == 'Linux'
@@ -132,6 +134,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22.18'
+          cache: npm
 
       - name: Install SVN (Ubuntu)
         if: runner.os == 'Linux'
@@ -191,6 +194,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22.18'
+          cache: npm
 
       - name: Install SVN (Ubuntu)
         if: runner.os == 'Linux'
